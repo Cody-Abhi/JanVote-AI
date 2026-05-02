@@ -1,0 +1,15 @@
+{
+  "name": "JanVote AI",
+  "description": "An interactive election education platform for India featuring AI-powered Q&A, interactive timelines, gamified quizzes, and polling booth locators.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone",
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI Chat Assistant",
+    "Election Timeline",
+    "Voter Journey Simulator",
+    "Leaderboard"
+  ]
+}

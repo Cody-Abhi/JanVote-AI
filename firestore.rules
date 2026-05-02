@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidUser(data) {
+      return data.uid == request.auth.uid &&
+             data.language in ['en', 'hi'];
+    }
+
+    match /users/{userId} {
+      allow get: if isSignedIn();
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && 
+                    request.resource.data.diff(resource.data).affectedKeys().hasOnly(['language', 'displayName', 'phone', 'location', 'voterId', 'updatedAt']) &&
+                    request.resource.data.uid == resource.data.uid;
+    }
+
+    function isValidScore(data) {
+      return data.userId == request.auth.uid &&
+             data.score is int &&
+             data.difficulty in ['easy', 'medium', 'hard'] &&
+             data.timestamp == request.time &&
+             data.keys().hasAll(['userId', 'userName', 'score', 'difficulty', 'category', 'timestamp']) &&
+             data.keys().size() == 6;
+    }
+
+    match /quizScores/{scoreId} {
+      allow list: if isSignedIn();
+      allow get: if isSignedIn();
+      allow create: if isSignedIn() && isValidScore(request.resource.data);
+    }
+
+    match /chatSessions/{sessionId} {
+      allow read, write: if isSignedIn() && sessionId == request.auth.uid;
+      
+      match /messages/{messageId} {
+        allow read, write: if isSignedIn() && sessionId == request.auth.uid;
+      }
+    }
+  }
+}

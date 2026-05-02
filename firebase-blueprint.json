@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user preferences and basic profile info.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "language": { "type": "string", "enum": ["en", "hi"] },
+        "phone": { "type": "string" },
+        "location": { "type": "string" },
+        "voterId": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "language"]
+    },
+    "QuizScore": {
+      "title": "Quiz Score",
+      "description": "Records of user performance in the gamified quiz.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "score": { "type": "integer" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "category": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "score", "difficulty", "timestamp"]
+    },
+    "ChatSession": {
+      "title": "Chat Session",
+      "description": "A conversation session between a user and the AI.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "lastMessage": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "An individual message within a session.",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["role", "content", "timestamp"]
+    },
+    "GlobalStats": {
+      "title": "Global Election Stats",
+      "description": "Real-time global election statistics.",
+      "type": "object",
+      "properties": {
+        "registeredVoters": { "type": "integer" },
+        "pollingStations": { "type": "integer" },
+        "avgWaitTime": { "type": "integer" },
+        "digitalEnrollments": { "type": "integer" },
+        "lastUpdated": { "type": "string", "format": "date-time" }
+      },
+      "required": ["registeredVoters", "pollingStations", "avgWaitTime", "lastUpdated"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile data."
+    },
+    "/quizScores/{scoreId}": {
+      "schema": "QuizScore",
+      "description": "Historical quiz scores for leaderboard purposes."
+    },
+    "/chatSessions/{sessionId}": {
+      "schema": "ChatSession",
+      "description": "AI chat sessions."
+    },
+    "/chatSessions/{sessionId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Messages within a session."
+    },
+    "/stats/election": {
+      "schema": "GlobalStats",
+      "description": "Global live election statistics."
+    }
+  }
+}

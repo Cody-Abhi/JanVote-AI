@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tiranga + Democracy Palette */
+  --color-saffron: #FF6500;
+  --color-saffron-light: #FF8C38;
+  --color-saffron-glow: rgba(255,101,0,0.15);
+  --color-white: #FFFFFF;
+  --color-ink-navy: #0B0F2E;
+  --color-ink-blue: #1A237E;
+  --color-chakra-blue: #1565C0;
+  --color-chakra-light: #42A5F5;
+  --color-emerald-green: #00796B;
+  --color-green-glow: rgba(0,121,107,0.15);
+  --color-ash-white: #F7F3EE;
+  --color-paper: #FFF8F0;
+  --color-gold: #D4A017;
+  --color-shadow-ink: rgba(11,15,46,0.12);
+
+  /* Typography */
+  --font-display: "Yatra One", "Tiro Devanagari Hindi", serif;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "DM Sans", sans-serif; /* Body font */
+  --font-mono: "Space Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">👆🏻</text></svg>'), auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900;
+  }
+}
+
+html.dark {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: #2e3034;
+}
+html.dark img,
+html.dark video,
+html.dark iframe,
+html.dark .leaflet-container {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.skiptranslate.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+
+.card-professional {
+  @apply bg-white rounded-3xl border border-slate-100 shadow-sm transition-all hover:shadow-xl hover:border-slate-200;
+}
+
+.button-primary {
+  @apply bg-blue-600 text-white font-bold rounded-2xl px-6 py-3 transition-all hover:bg-blue-700 active:scale-95 shadow-md shadow-blue-600/20;
+}
+
+.text-header-caps {
+  @apply text-xs font-black text-orange-500 uppercase tracking-[0.2em];
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
