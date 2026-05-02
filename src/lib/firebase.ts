@@ -11,8 +11,8 @@ const firebaseConfig = {
   projectId: "janvote-ai-2d1dc",
   storageBucket: "janvote-ai-2d1dc.firebasestorage.app",
   messagingSenderId: "553351440034",
-  appId: "1:553351440034:web:48fcb5bd20798fb2d759fb",
-  measurementId: "G-P5BHLG8YE6"
+  appId: "1:553351440034:web:796f083ac9b7cb3bd759fb",
+  measurementId: "G-SCBVP4NTZT"
 };
 
 const app = initializeApp(firebaseConfig);
