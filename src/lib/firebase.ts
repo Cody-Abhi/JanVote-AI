@@ -5,14 +5,14 @@ import { getDatabase } from 'firebase/database';
 import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAikK6acmy_O4icxluBo41qrwevLR8hncs",
-  authDomain: "janvote-ai-2d1dc.firebaseapp.com",
-  databaseURL: "https://janvote-ai-2d1dc-default-rtdb.firebaseio.com",
-  projectId: "janvote-ai-2d1dc",
-  storageBucket: "janvote-ai-2d1dc.firebasestorage.app",
-  messagingSenderId: "553351440034",
-  appId: "1:553351440034:web:796f083ac9b7cb3bd759fb",
-  measurementId: "G-SCBVP4NTZT"
+  apiKey: "AIzaSyBUZyZGm96C4UunsYb7k8XhFm7iZRtSxCE",
+  authDomain: "janvote-ai-3c8fa.firebaseapp.com",
+  databaseURL: "https://janvote-ai-3c8fa-default-rtdb.firebaseio.com",
+  projectId: "janvote-ai-3c8fa",
+  storageBucket: "janvote-ai-3c8fa.firebasestorage.app",
+  messagingSenderId: "837599832235",
+  appId: "1:837599832235:web:ee5eff2e54b42e58d02fee",
+  measurementId: "G-XKS5RJR60B"
 };
 
 const app = initializeApp(firebaseConfig);
