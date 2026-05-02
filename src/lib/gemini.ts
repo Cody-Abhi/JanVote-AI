@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyAc2x7CsTzaEAmB1R4nEKTbp_TLTXnL2U4";
+const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 const getAI = () => {
   const apiKey = GEMINI_KEY;
@@ -51,7 +51,7 @@ export async function getGeminiResponse(prompt: string, history: any[] = [], lan
         tools: [{ googleSearch: {} }],
       }
     });
-    
+
     return response.text || "I'm sorry, I couldn't generate a response.";
   } catch (error) {
     console.error("Gemini API Error:", error);
@@ -128,7 +128,7 @@ export async function getRealTimeStats() {
         tools: [{ googleSearch: {} }],
       }
     });
-    
+
     const text = response.text || "{}";
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
@@ -158,7 +158,7 @@ export async function getRealTimeElectionNews() {
         tools: [{ googleSearch: {} }],
       }
     });
-    
+
     const text = response.text || "[]";
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
