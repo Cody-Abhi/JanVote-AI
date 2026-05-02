@@ -1,20 +1,49 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# JanVote AI 🗳️
 
-# Run and deploy your AI Studio app
+JanVote AI is a production-ready, highly intelligent election assistant designed for Indian voters. It provides real-time information on polling booths, election laws, party comparisons, and more, with full multi-language support.
 
-This contains everything you need to run your app locally.
+## Features
+- 🤖 **AI Assistant:** Powered by Gemini for factual election queries.
+- 🪷 **Party Comparison:** Side-by-side analysis of major Indian political parties.
+- 🗺️ **Booth Locator:** Interactive maps to find your polling station.
+- 📄 **EPIC Scanner:** AI-powered OCR to extract voter ID details.
+- 🗣️ **Multilingual:** Supports English, Hindi, Bengali, Telugu, Tamil, and Marathi.
 
-View your app in AI Studio: https://ai.studio/apps/2e666e88-92d3-4e41-9e4f-adb2524fb49c
+## Deployment to Cloud Run
 
-## Run Locally
+The project is already configured for Google Cloud Run with a `Dockerfile` and production-ready `server.ts`.
 
-**Prerequisites:**  Node.js
+### Prerequisites
+1. [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed.
+2. A GCP Project with billing enabled.
 
+### Steps to Deploy
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. **Build and Deploy:**
+   Run the following command from the project root:
+   ```bash
+   gcloud run deploy janvote-ai --source . --platform managed --region us-central1 --allow-unauthenticated
+   ```
+
+2. **Environment Variables:**
+   After deployment, ensure you set the following environment variables in the Cloud Run console:
+   - `GEMINI_API_KEY`
+   - `VISION_API_KEY`
+   - `SPEECH_API_KEY`
+   - `VITE_GOOGLE_MAPS_API_KEY`
+   - `GCP_API_KEY` (shared fallback)
+
+## Local Development
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Configure Environment:**
+   Create a `.env` file based on `.env.example`.
+
+3. **Start Development Server:**
+   ```bash
+   npm run dev
+   ```
