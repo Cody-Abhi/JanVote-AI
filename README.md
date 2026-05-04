@@ -127,13 +127,13 @@ Community engagement tracker showing top civic champions by quiz score. Firebase
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        FRONTEND (React 19 + Vite 6)                  │
-│                                                                       │
+│                        FRONTEND (React 19 + Vite 6)                 │
+│                                                                     │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ │
 │  │  React Router│  │  Framer      │  │  Tailwind    │  │  i18next │ │
 │  │  v7 (SPA)    │  │  Motion v12  │  │  CSS v4      │  │  8 langs │ │
 │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────┘ │
-│                                                                       │
+│                                                                     │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ │
 │  │  Three.js    │  │  Recharts    │  │  React       │  │  Leaflet │ │
 │  │  (Globe)     │  │  (Charts)    │  │  Leaflet     │  │  Maps    │ │
